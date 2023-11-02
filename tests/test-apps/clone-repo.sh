@@ -32,6 +32,11 @@ if [ "${MAVEN_IGNORE_SELF_SIGNED_CERTIFICATE}" = "true" ]; then
     MAVEN_OPTIONS="${MAVEN_OPTIONS} -Denforcer.skip"
 fi
 
+# Run build of examples with SP3 builds of quarkus platform
+# <quarkus.platform.version>2.13.8.Final</quarkus.platform.version>
+# <quarkus-plugin.version>2.13.8.Final</quarkus-plugin.version>
+MAVEN_OPTIONS="${MAVEN_OPTIONS} -Dquarkus.platform.version=2.13.8.SP3 -Dquarkus-plugin.version=2.13.8.SP3 -Dquarkus.platform.group-id=com.redhat.quarkus.platform"
+
 # Clone examples
 cd /tmp
 rm -rf kogito-examples/
