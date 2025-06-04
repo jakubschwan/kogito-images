@@ -22,7 +22,7 @@ Feature: Kogito-jit-runner feature.
 
   Scenario: verify if all labels are correctly set on kogito-jit-runner image
     Given image is built
-    Then the image should contain label maintainer with value Apache KIE <dev@kie.apache.org>
+    Then the image should contain label maintainer with value serverless-logic <bsig-cloud@redhat.com>
     And the image should contain label io.openshift.expose-services with value 8080:http
     And the image should contain label io.k8s.description with value Runtime image for Kogito JIT Runner
     And the image should contain label io.k8s.display-name with value Kogito JIT Runner

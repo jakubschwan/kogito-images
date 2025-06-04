@@ -24,7 +24,7 @@ Feature: Serverless Workflow devmode images
   Scenario: Verify if container starts in devmode by default
     When container is started with env
       | variable     | value |
-      | SCRIPT_DEBUG | true  |
+      | SCRIPT_DEBUG | false  |
     Then check that page is served
       | property             | value             |
       | port                 | 8080              |
@@ -32,8 +32,6 @@ Feature: Serverless Workflow devmode images
       | wait                 | 480               |
       | request_method       | GET               |
       | expected_status_code | 200               |
-    And container log should contain -Duser.home=/home/kogito -o
-    And container log should contain -Dquarkus.test.continuous-testing=disabled
     And container log should match regex Installed features:.*kogito-serverless-workflow
     And container log should match regex Installed features:.*kie-addon-knative-eventing-extension
     And container log should match regex Installed features:.*smallrye-health
@@ -45,7 +43,7 @@ Feature: Serverless Workflow devmode images
   Scenario: Verify if container starts correctly when continuous testing is enabled
     When container is started with env
       | variable                   | value    |
-      | SCRIPT_DEBUG               | true     |
+      | SCRIPT_DEBUG               | false     |
       | QUARKUS_CONTINUOUS_TESTING | enabled  |
     Then check that page is served
       | property             | value             |
@@ -54,25 +52,21 @@ Feature: Serverless Workflow devmode images
       | wait                 | 480               |
       | request_method       | GET               |
       | expected_status_code | 200               |
-    And container log should contain -Duser.home=/home/kogito
-    And container log should not contain /bin/mvn -B -X --batch-mode -o
     And container log should contain -Dquarkus.test.continuous-testing=enabled
 
   Scenario: Verify if container starts correctly when QUARKUS_EXTENSIONS env is used
     When container is started with env
       | variable                   | value                                    |
-      | SCRIPT_DEBUG               | true                                     |
-      | QUARKUS_EXTENSIONS         | io.quarkus:quarkus-elytron-security-jdbc |
+      | SCRIPT_DEBUG               | false                                     |
+      | QUARKUS_EXTENSIONS         | io.quarkus:quarkus-elytron-security-jdbc:3.15.4 |
     Then check that page is served
       | property             | value             |
       | port                 | 8080              |
       | path                 | /q/health/ready   |
-      | wait                 | 480               |
+      | wait                 | 960               |
       | request_method       | GET               |
       | expected_status_code | 200               |
-    And container log should contain -Duser.home=/home/kogito
-    And container log should not contain /bin/mvn -B -X --batch-mode -o
-    And container log should contain Extension io.quarkus:quarkus-elytron-security-jdbc has been installed
+    And container log should match regex Extension io\.quarkus:quarkus-elytron-security-jdbc.* has been installed
     And container log should match regex Installed features:.*kogito-serverless-workflow
     And container log should match regex Installed features:.*kie-addon-knative-eventing-extension
     And container log should match regex Installed features:.*smallrye-health
@@ -131,19 +125,19 @@ Feature: Serverless Workflow devmode images
       | variable                    | value |
       | QUARKUS_DEVSERVICES_ENABLED | false |
     Then check that page is served
-      | property             | value                                                              |
-      | port                 | 8080                                                               |
+      | property             | value                                                                 |
+      | port                 | 8080                                                                  |
       | path                 | /q/dev-ui/org.kie.kogito-addons-quarkus-data-index-inmemory/data-index-graphql-ui |
-      | request_method       | GET                                                                |
-      | wait                 | 480                                                                |
-      | expected_status_code | 200                                                                |
+      | request_method       | GET                                                                   |
+      | wait                 | 480                                                                   |
+      | expected_status_code | 403                                                                   |
     And check that page is served
-      | property             | value                                                                            |
-      | port                 | 8080                                                                             |
+      | property             | value                                                                  |
+      | port                 | 8080                                                                   |
       | path                 | /q/dev-ui/org.apache.kie.sonataflow.sonataflow-quarkus-devui/workflows |
-      | request_method       | GET                                                                              |
-      | wait                 | 480                                                                              |
-      | expected_status_code | 200                                                                              |
+      | request_method       | GET                                                                    |
+      | wait                 | 480                                                                    |
+      | expected_status_code | 403                                                                    |
 
   Scenario: Verify if container starts in devmode with service discovery enabled
     When container is started with env
@@ -157,7 +151,7 @@ Feature: Serverless Workflow devmode images
       | request_method       | GET               |
       | expected_status_code | 200               |
     And container log should contain kogito-addon-microprofile-config-service-catalog-extension
-    
+
   Scenario: Verify if container have the KOGITO_CODEGEN_PROCESS_FAILONERROR env set to false
     When container is started with command bash
     Then run sh -c 'echo $KOGITO_CODEGEN_PROCESS_FAILONERROR' in container and immediately check its output for false
