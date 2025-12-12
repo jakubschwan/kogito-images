@@ -18,7 +18,7 @@
 #
 
 @docker.io/apache/incubator-kie-sonataflow-builder
-@openshift-serverless-1/logic-swf-builder-rhel8
+@openshift-serverless-1/logic-swf-builder-rhel9
 Feature: Serverless Workflow builder images
 
   Scenario: Verify that the application is built and started correctly

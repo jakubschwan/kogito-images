@@ -18,14 +18,14 @@
 #
 schema_version: 1
 
-name: "openshift-serverless-1/logic-jobs-service-ephemeral-rhel8"
+name: "openshift-serverless-1/logic-jobs-service-ephemeral-rhel9"
 version: "1.36.0"
 from: "registry.access.redhat.com/ubi8/openjdk-17-runtime:latest"
 description: "Red Hat build of Runtime image for Kogito in memory Jobs Service"
 
 labels:
   - name: "com.redhat.component"
-    value: "openshift-serverless-1-logic-jobs-service-ephemeral-rhel8-container"
+    value: "openshift-serverless-1-logic-jobs-service-ephemeral-rhel9-container"
   - name: "maintainer"
     value: "serverless-logic <bsig-cloud@redhat.com>"
   - name: "io.k8s.description"
@@ -76,7 +76,7 @@ osbs:
         - ppc64le
       compose:
         pulp_repos: true
-  extra_dir: osbs-extra/logic-jobs-service-ephemeral-rhel8
+  extra_dir: osbs-extra/logic-jobs-service-ephemeral-rhel9
   repository:
     name: containers/openshift-serverless-1-logic-jobs-service-ephemeral
     branch: openshift-serverless-1.36-rhel-8

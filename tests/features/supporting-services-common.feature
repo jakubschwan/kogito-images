@@ -18,9 +18,9 @@
 #
 
 @docker.io/apache/incubator-kie-kogito-data-index-ephemeral
-@openshift-serverless-1/logic-data-index-ephemeral-rhel8
+@openshift-serverless-1/logic-data-index-ephemeral-rhel9
 @docker.io/apache/incubator-kie-kogito-data-index-postgresql
-@openshift-serverless-1/logic-data-index-postgresql-rhel8
+@openshift-serverless-1/logic-data-index-postgresql-rhel9
 @docker.io/apache/incubator-kie-kogito-jit-runner
 Feature: kogito supporting services common feature
 

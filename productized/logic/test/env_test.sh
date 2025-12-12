@@ -31,4 +31,4 @@ export image_namespace=${image_registry_name##*/}
 export image_descriptor_filename=${image_id}-image.yaml
 
 export community_image_id=${image_id/logic-/kogito-}
-export community_image_id=${community_image_id/-rhel8/}
+export community_image_id=${community_image_id/-rhel9/}
