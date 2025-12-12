@@ -17,7 +17,7 @@
 # under the License.
 #
 schema_version: 1
-name: "openshift-serverless-1/logic-swf-devmode-rhel8"
+name: "openshift-serverless-1/logic-swf-devmode-rhel9"
 from: "registry.access.redhat.com/ubi8/openjdk-17:latest"
 version: "1.36.0"
 description: "Red Hat build of Kogito Serverless Workflow development mode image with
@@ -37,7 +37,7 @@ labels:
   - name: "io.openshift.expose-services"
     value: "8080:http,5005:http"
   - name: "com.redhat.component"
-    value: "openshift-serverless-1-logic-swf-devmode-rhel8-container"
+    value: "openshift-serverless-1-logic-swf-devmode-rhel9-container"
   - name: "maintainer"
     value: "serverless-logic <bsig-cloud@redhat.com>"
 
@@ -83,7 +83,7 @@ osbs:
           - aarch64
       compose:
         pulp_repos: true
-  extra_dir: osbs-extra/logic-swf-devmode-rhel8
+  extra_dir: osbs-extra/logic-swf-devmode-rhel9
   repository:
     name: containers/openshift-serverless-1-logic-swf-devmode
     branch: openshift-serverless-1.36-rhel-8

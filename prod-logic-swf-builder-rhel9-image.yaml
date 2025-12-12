@@ -17,7 +17,7 @@
 # under the License.
 #
 schema_version: 1
-name: "openshift-serverless-1/logic-swf-builder-rhel8"
+name: "openshift-serverless-1/logic-swf-builder-rhel9"
 version: "1.36.0"
 from: "registry.access.redhat.com/ubi8/openjdk-17:latest"
 description: "Red Hat build of Runtime image for Kogito Serverless Workflow builder with Quarkus extensions libraries preinstalled"
@@ -32,7 +32,7 @@ labels:
   - name: "org.kie.kogito.version"
     value: "999-SNAPSHOT"
   - name: "com.redhat.component"
-    value: "openshift-serverless-1-logic-swf-builder-rhel8-container"
+    value: "openshift-serverless-1-logic-swf-builder-rhel9-container"
   - name: "maintainer"
     value: "serverless-logic <bsig-cloud@redhat.com>"
   - name: "io.k8s.description"
@@ -83,7 +83,7 @@ osbs:
           - aarch64
       compose:
         pulp_repos: true
-  extra_dir: osbs-extra/logic-swf-builder-rhel8
+  extra_dir: osbs-extra/logic-swf-builder-rhel9
   repository:
     name: containers/openshift-serverless-1-logic-swf-builder
     branch: openshift-serverless-1.36-rhel-8

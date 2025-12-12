@@ -18,7 +18,7 @@
 #
 
 @docker.io/apache/incubator-kie-kogito-jobs-service-ephemeral
-@openshift-serverless-1/logic-jobs-service-ephemeral-rhel8
+@openshift-serverless-1/logic-jobs-service-ephemeral-rhel9
 Feature: Kogito-jobs-service-ephemeral feature.
 
   Scenario: verify if all labels are correctly set kogito-jobs-service image image
