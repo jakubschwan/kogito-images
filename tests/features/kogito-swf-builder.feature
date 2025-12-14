@@ -27,6 +27,7 @@ Feature: Serverless Workflow builder images
       | SCRIPT_DEBUG | false  |
     Then check that page is served
       | property             | value             |
+      | host                 | localhost         |
       | port                 | 8080              |
       | path                 | /q/health/ready   |
       | wait                 | 480               |
@@ -43,6 +44,7 @@ Feature: Serverless Workflow builder images
       | QUARKUS_EXTENSIONS  | io.quarkus:quarkus-elytron-security-jdbc:3.15.4 |
     Then check that page is served
       | property             | value             |
+      | host                 | localhost         |
       | port                 | 8080              |
       | path                 | /q/health/ready   |
       | wait                 | 960               |
